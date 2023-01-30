@@ -48,38 +48,46 @@ const CharacterMaker = () => {
     return <section className="CharacterMaker">
         <h2>RPG Character Generator</h2>
         <form className="CharacterMaker__Form">
-            <label>Race:&emsp;
-            <select value={race} onChange={e => setRace(e.target.value)}>
+            <label>Race:
+            <select value={race} onChange={e => setRace(e.target.value)} className="CharacterMaker__Selector">
                 <option value="human">Human</option>
                 <option value="orc">Orc</option>
                 <option value="elf">Elf</option>
                 <option value="dwarf">Dwarf</option>
+                <option value="">Custom...</option>
             </select>
+                {!["human","orc","elf","dwarf"].includes(race) ? <input type ="text" className="CharacterMaker__FormCustomInput" onChange={e => setRace(e.target.value)}></input> : ""}
             </label>
 
-            <label>Profession:&emsp;
-            <select value={role} onChange={e => setRole(e.target.value)}>
+            <label>Profession:
+            <select value={role} onChange={e => setRole(e.target.value)} className="CharacterMaker__Selector">
                 <option value="ranger">Ranger</option>
                 <option value="warrior">Warrior</option>
                 <option value="wizard">Wizard</option>
                 <option value="thief">Thief</option>
+                <option value="">Custom...</option>
             </select>
+                {!["ranger","warrior","wizard","thief"].includes(role) ? <input type ="text" className="CharacterMaker__FormCustomInput" onChange={e => setRole(e.target.value)}></input> : ""}
             </label>
 
-            <label>Lawfulness:&emsp;
-            <select value={alignmentX} onChange={e => setAlignmentX(e.target.value)}>
+            <label>Lawfulness:
+            <select value={alignmentX} onChange={e => setAlignmentX(e.target.value)} className="CharacterMaker__Selector">
                 <option value="lawful">Lawful</option>
                 <option value="neutral">Neutral</option>
                 <option value="chaotic">Chaotic</option>
+                <option value="">Custom...</option>
             </select>
+            {!["lawful","neutral","chaotic"].includes(alignmentX) ? <input type ="text" className="CharacterMaker__FormCustomInput" onChange={e => setAlignmentX(e.target.value)}></input> : ""}
             </label>
 
-            <label>Morality:&emsp;
-            <select value={alignmentY} onChange={e => setAlignmentY(e.target.value)}>
+            <label>Morality:
+            <select value={alignmentY} onChange={e => setAlignmentY(e.target.value)} className="CharacterMaker__Selector">
                 <option value="good">Good</option>
                 <option value="neutral">Neutral</option>
                 <option value="evil">Evil</option>
+                <option value="">Custom...</option>
             </select>
+            {!["good","neutral","evil"].includes(alignmentY) ? <input type ="text" className="CharacterMaker__FormCustomInput" onChange={e => setAlignmentY(e.target.value)}></input> : ""}
             </label>
             
             <b>A {alignmentX} {alignmentY} {race} {role}</b>
