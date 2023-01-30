@@ -1,102 +1,163 @@
 import { useState } from "react";
-import "./CharacterMaker.css"
+import "./CharacterMaker.css";
 
 interface ICharacterData {
-    "race": string,
-    "role": string,
-    "alignmentX": string,
-    "alignmentY": string
+  race: string;
+  role: string;
+  alignmentX: string;
+  alignmentY: string;
 }
 
 const CharacterMaker = () => {
-    const [race, setRace] = useState<string>("human");
-    const [role, setRole] = useState<string>("ranger");
-    const [alignmentX, setAlignmentX] = useState<string>("lawful");
-    const [alignmentY, setAlignmentY] = useState<string>("good");
-    const [response, setResponse] = useState<string | undefined>(undefined);
+  const [race, setRace] = useState<string>("human");
+  const [role, setRole] = useState<string>("ranger");
+  const [alignmentX, setAlignmentX] = useState<string>("lawful");
+  const [alignmentY, setAlignmentY] = useState<string>("good");
+  const [response, setResponse] = useState<string | undefined>(undefined);
 
-    const postToApi = async () => {
-        const charData : ICharacterData = {race: race, role: role, alignmentX: alignmentX, alignmentY: alignmentY};
-        const uri = "https://localhost:7129/Communications";
-        const request = {
-            method: "POST",
-            headers: {
-                "accept" : "text/plain",
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify(charData)
-        }
-        console.log(JSON.stringify(charData));
-        const response = await fetch(uri, request);
-        const data = await response.json();
-        // const data = JSON.parse(response);
-        console.log(data);
-        setResponse(data.choices[0].text)
+  const postToApi = async () => {
+    const charData: ICharacterData = {
+      race: race,
+      role: role,
+      alignmentX: alignmentX,
+      alignmentY: alignmentY,
+    };
+    const uri = "https://localhost:7129/Communications";
+    const request = {
+      method: "POST",
+      headers: {
+        accept: "text/plain",
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(charData),
+    };
+    console.log(JSON.stringify(charData));
+    const response = await fetch(uri, request);
+    const data = await response.json();
+    // const data = JSON.parse(response);
+    console.log(data);
+    setResponse(data.choices[0].text);
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    // console.log(e);
+    try {
+      postToApi();
+    } catch (e) {
+      console.error(e);
     }
+  };
 
-    const handleSubmit = (e : any) => {
-        e.preventDefault();
-        // console.log(e);
-        try {
-            postToApi()
-        }
-        catch (e) {
-            console.error(e);
-        }
-    }
-
-    return <section className="CharacterMaker">
-        <h2>RPG Character Generator</h2>
+  return (
+    <section className="CharacterMaker">
+      <div className="CharacterMaker__Main">
+      <h2>RPG Character Generator</h2>
         <form className="CharacterMaker__Form">
-            <label>Race:
-            <select value={race} onChange={e => setRace(e.target.value)} className="CharacterMaker__Selector">
-                <option value="human">Human</option>
-                <option value="orc">Orc</option>
-                <option value="elf">Elf</option>
-                <option value="dwarf">Dwarf</option>
-                <option value="">Custom...</option>
+          <label>
+            Race:
+            <select
+              value={race}
+              onChange={(e) => setRace(e.target.value)}
+              className="CharacterMaker__Selector"
+            >
+              <option value="human">Human</option>
+              <option value="orc">Orc</option>
+              <option value="elf">Elf</option>
+              <option value="dwarf">Dwarf</option>
+              <option value="">Custom...</option>
             </select>
-                {!["human","orc","elf","dwarf"].includes(race) ? <input type ="text" className="CharacterMaker__FormCustomInput" onChange={e => setRace(e.target.value)}></input> : ""}
-            </label>
+            {!["human", "orc", "elf", "dwarf"].includes(race) ? (
+              <input
+                type="text"
+                className="CharacterMaker__FormCustomInput"
+                onChange={(e) => setRace(e.target.value)}
+              ></input>
+            ) : (
+              ""
+            )}
+          </label>
 
-            <label>Profession:
-            <select value={role} onChange={e => setRole(e.target.value)} className="CharacterMaker__Selector">
-                <option value="ranger">Ranger</option>
-                <option value="warrior">Warrior</option>
-                <option value="wizard">Wizard</option>
-                <option value="thief">Thief</option>
-                <option value="">Custom...</option>
+          <label>
+            Profession:
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="CharacterMaker__Selector"
+            >
+              <option value="ranger">Ranger</option>
+              <option value="warrior">Warrior</option>
+              <option value="wizard">Wizard</option>
+              <option value="thief">Thief</option>
+              <option value="">Custom...</option>
             </select>
-                {!["ranger","warrior","wizard","thief"].includes(role) ? <input type ="text" className="CharacterMaker__FormCustomInput" onChange={e => setRole(e.target.value)}></input> : ""}
-            </label>
+            {!["ranger", "warrior", "wizard", "thief"].includes(role) ? (
+              <input
+                type="text"
+                className="CharacterMaker__FormCustomInput"
+                onChange={(e) => setRole(e.target.value)}
+              ></input>
+            ) : (
+              ""
+            )}
+          </label>
 
-            <label>Lawfulness:
-            <select value={alignmentX} onChange={e => setAlignmentX(e.target.value)} className="CharacterMaker__Selector">
-                <option value="lawful">Lawful</option>
-                <option value="neutral">Neutral</option>
-                <option value="chaotic">Chaotic</option>
-                <option value="">Custom...</option>
+          <label>
+            Lawfulness:
+            <select
+              value={alignmentX}
+              onChange={(e) => setAlignmentX(e.target.value)}
+              className="CharacterMaker__Selector"
+            >
+              <option value="lawful">Lawful</option>
+              <option value="neutral">Neutral</option>
+              <option value="chaotic">Chaotic</option>
+              <option value="">Custom...</option>
             </select>
-            {!["lawful","neutral","chaotic"].includes(alignmentX) ? <input type ="text" className="CharacterMaker__FormCustomInput" onChange={e => setAlignmentX(e.target.value)}></input> : ""}
-            </label>
+            {!["lawful", "neutral", "chaotic"].includes(alignmentX) ? (
+              <input
+                type="text"
+                className="CharacterMaker__FormCustomInput"
+                onChange={(e) => setAlignmentX(e.target.value)}
+              ></input>
+            ) : (
+              ""
+            )}
+          </label>
 
-            <label>Morality:
-            <select value={alignmentY} onChange={e => setAlignmentY(e.target.value)} className="CharacterMaker__Selector">
-                <option value="good">Good</option>
-                <option value="neutral">Neutral</option>
-                <option value="evil">Evil</option>
-                <option value="">Custom...</option>
+          <label>
+            Morality:
+            <select
+              value={alignmentY}
+              onChange={(e) => setAlignmentY(e.target.value)}
+              className="CharacterMaker__Selector"
+            >
+              <option value="good">Good</option>
+              <option value="neutral">Neutral</option>
+              <option value="evil">Evil</option>
+              <option value="">Custom...</option>
             </select>
-            {!["good","neutral","evil"].includes(alignmentY) ? <input type ="text" className="CharacterMaker__FormCustomInput" onChange={e => setAlignmentY(e.target.value)}></input> : ""}
-            </label>
-            
-            <b>A {alignmentX} {alignmentY} {race} {role}</b>
+            {!["good", "neutral", "evil"].includes(alignmentY) ? (
+              <input
+                type="text"
+                className="CharacterMaker__FormCustomInput"
+                onChange={(e) => setAlignmentY(e.target.value)}
+              ></input>
+            ) : (
+              ""
+            )}
+          </label>
 
-            <button onClick={handleSubmit}>Submit</button>
+          <b>
+            A {alignmentX} {alignmentY} {race} {role}
+          </b>
 
+          <button onClick={handleSubmit}>Submit</button>
         </form>
-            {<p>{response ?? "Response will come here!"}</p>}
+      </div>
+        {<p>{response ?? "Response will come here!"}</p>}
     </section>
-}
+  );
+};
 
 export default CharacterMaker;

@@ -7,6 +7,11 @@
     justify-content: space-between;
 }
 
+.CharacterMaker__Main {
+    /* display: flex; */
+    flex-direction: row;
+}
+
 .CharacterMaker__Form {
     width: 25rem;
     background-color: rgba(255,255,255,0.25);
