@@ -52,7 +52,7 @@ const CharacterMaker = () => {
   return (
     <section className="CharacterMaker">
       <div className="CharacterMaker__Main">
-      <h2>RPG Character Generator</h2>
+        <h2>RPG Character Generator</h2>
         <form className="CharacterMaker__Form">
           <label>
             Race:
@@ -155,7 +155,7 @@ const CharacterMaker = () => {
           <button onClick={handleSubmit}>Submit</button>
         </form>
       </div>
-        {<p>{response ?? "Response will come here!"}</p>}
+      {<p>{response ?? "Response will come here!"}</p>}
     </section>
   );
 };

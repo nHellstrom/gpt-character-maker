@@ -1,0 +1,8 @@
+.ConnectionSettings--visible {
+    display: flex;
+    background-color: deepskyblue;
+}
+
+.ConnectionSettings--hidden {
+    display: none
+}
