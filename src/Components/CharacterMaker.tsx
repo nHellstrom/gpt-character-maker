@@ -14,14 +14,9 @@ const CharacterMaker = () => {
   const [alignmentX, setAlignmentX] = useState<string>("lawful");
   const [alignmentY, setAlignmentY] = useState<string>("good");
   const [response, setResponse] = useState<string | undefined>(undefined);
+  const [responseImg, setResponseImg] = useState<string | undefined>(undefined);
 
-  const postToApi = async () => {
-    const charData: ICharacterData = {
-      race: race,
-      role: role,
-      alignmentX: alignmentX,
-      alignmentY: alignmentY,
-    };
+  const fetchBiography = async (charData : ICharacterData) => {
     const uri = "https://localhost:7129/Communications";
     const request = {
       method: "POST",
@@ -31,12 +26,36 @@ const CharacterMaker = () => {
       },
       body: JSON.stringify(charData),
     };
-    console.log(JSON.stringify(charData));
     const response = await fetch(uri, request);
     const data = await response.json();
-    // const data = JSON.parse(response);
-    console.log(data);
     setResponse(data.choices[0].text);
+  }
+
+  const fetchPortrait = async (charData : ICharacterData) => {
+    const uri = "https://localhost:7129/Communications/Image";
+    const request = {
+      method: "POST",
+      headers: {
+        accept: "text/plain",
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(charData),
+    };
+    const response = await fetch(uri, request);
+    const data = await response.json();
+    console.log("Image response json:" , data);
+    setResponseImg(data.data[0].url);
+  } 
+
+  const postToApi = async () => {
+    const charData: ICharacterData = {
+      race: race,
+      role: role,
+      alignmentX: alignmentX,
+      alignmentY: alignmentY,
+    };
+    fetchBiography(charData);
+    fetchPortrait(charData);
   };
 
   const handleSubmit = (e: any) => {
@@ -155,7 +174,8 @@ const CharacterMaker = () => {
           <button onClick={handleSubmit}>Submit</button>
         </form>
       </div>
-      {<p>{response ?? "Response will come here!"}</p>}
+      {<p>{response ?? "Response will come here! It may take up to a minute, please be patient. You will be notified if the process has failed."}</p>}
+      {<p>{responseImg !== undefined ? <img src={responseImg} alt="ChatGPT-made character image"/> : "Response image will appear here!."}</p>}
     </section>
   );
 };

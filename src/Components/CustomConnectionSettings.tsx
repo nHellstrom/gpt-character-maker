@@ -12,7 +12,9 @@ const CustomConnectionSettings = (props: IApiSettings) => {
 
   return (
     <div className={ConnectionSettingsVisibility}>
-      <section className="ConnectionSettings">Api settings</section>
+      <section className="ConnectionSettings">
+        
+      </section>
     </div>
   );
 };
