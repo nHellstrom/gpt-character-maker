@@ -1,10 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  --primary-color: #a7bbec;
+  --primary-color-dark: #9097c0;
+  --secondary-color: #705d56;
+  --secondary-color-dark: #503b31;
+  --black-color: #020202;
+  --white-color: #f4f6f5;
+}
+
 .App {
   text-align: center;
+  background-color: brown;
+}
+
+.App__Header {
+  padding-top: 0px;
+  height: 5vh;
+  color: var(--white-color);
+  background-color: var(--secondary-color-dark);
 }
 
 .App__Main {
-  background-color: darkseagreen;
-  min-height: 100vh;
+  background-color: var(--secondary-color);
+  height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -72,7 +72,6 @@ const CharacterMaker = () => {
   return (
     <section className="CharacterMaker">
       <div className="CharacterMaker__Main">
-        <h2>RPG Character Generator</h2>
         <form className="CharacterMaker__Form">
           <label>
             Race:

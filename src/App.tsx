@@ -12,6 +12,9 @@ function App() {
   return (
     <div className="App">
       <ApiContext.Provider value={undefined}>
+        <header className="App__Header">
+          <h1>RPG Character Generator</h1>
+        </header>
         <main className="App__Main">
           <CharacterMaker />
           <div className="App__ConnectionSettings">
