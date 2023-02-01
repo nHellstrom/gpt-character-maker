@@ -10,3 +10,10 @@
   align-items: center;
   justify-content: center;
 }
+
+button {
+  min-height: 2rem;
+  max-height: 3.5rem;
+  max-width: 8rem;
+  padding: 5px 8px;
+}

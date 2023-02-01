@@ -1,10 +1,11 @@
 .CharacterMaker {
-    width: 30rem;
+    min-width: 50rem;
+    max-width: 75rem;
     background-color: rgba(255,255,255,0.25);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .CharacterMaker__Main {
@@ -19,7 +20,8 @@
     display: flex;
     gap:0.65rem;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
 .CharacterMaker__Selector {
@@ -29,3 +31,25 @@
 .CharacterMaker__FormCustomInput {
     width: 8rem;
 }
+
+.CharacterMaker__OutputArea {
+    max-width: 26rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-left: 4px solid rgba(0, 0, 0, 0.125);
+}
+
+.CharacterMaker__Output-Text {
+    text-align: justify;
+}
+
+.CharacterMaker__Output-PortraitContainer {
+    width: 256px;
+    height: 256px;
+    border: 4px solid black;
+
+}
+
+.CharacterMaker__Output-Portrait {}

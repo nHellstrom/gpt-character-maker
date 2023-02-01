@@ -15,8 +15,9 @@ const CharacterMaker = () => {
   const [alignmentY, setAlignmentY] = useState<string>("good");
   const [response, setResponse] = useState<string | undefined>(undefined);
   const [responseImg, setResponseImg] = useState<string | undefined>(undefined);
+  const [traits, setTraits] = useState<string[]>([]);
 
-  const fetchBiography = async (charData : ICharacterData) => {
+  const fetchBiography = async (charData: ICharacterData) => {
     const uri = "https://localhost:7129/Communications";
     const request = {
       method: "POST",
@@ -29,9 +30,9 @@ const CharacterMaker = () => {
     const response = await fetch(uri, request);
     const data = await response.json();
     setResponse(data.choices[0].text);
-  }
+  };
 
-  const fetchPortrait = async (charData : ICharacterData) => {
+  const fetchPortrait = async (charData: ICharacterData) => {
     const uri = "https://localhost:7129/Communications/Image";
     const request = {
       method: "POST",
@@ -43,9 +44,9 @@ const CharacterMaker = () => {
     };
     const response = await fetch(uri, request);
     const data = await response.json();
-    console.log("Image response json:" , data);
+    console.log("Image response json:", data);
     setResponseImg(data.data[0].url);
-  } 
+  };
 
   const postToApi = async () => {
     const charData: ICharacterData = {
@@ -171,11 +172,28 @@ const CharacterMaker = () => {
             A {alignmentX} {alignmentY} {race} {role}
           </b>
 
-          <button onClick={handleSubmit}>Submit</button>
+          <button onClick={handleSubmit} className="CharacterMaker__Button">Submit</button>
         </form>
       </div>
-      {<p>{response ?? "Response will come here! It may take up to a minute, please be patient. You will be notified if the process has failed."}</p>}
-      {<p>{responseImg !== undefined ? <img src={responseImg} alt="ChatGPT-made character image"/> : "Response image will appear here!."}</p>}
+      <div className="CharacterMaker__OutputArea">
+        <div className="CharacterMaker__Output-PortraitContainer">
+        {
+          <>
+            {responseImg !== undefined ? (
+              <img src={responseImg} alt="ChatGPT-made character image" className="CharacterMaker__Output-PortraitImage"/>
+            ) : (
+              "Response image will appear here!."
+            )}
+          </>
+        }
+        </div>
+        {
+          <p className="CharacterMaker__Output-Text">
+            {response ??
+              "Response will come here! It may take up to a minute, please be patient. You will be notified if the process has failed."}
+          </p>
+        }
+      </div>
     </section>
   );
 };
