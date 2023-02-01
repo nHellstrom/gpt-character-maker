@@ -71,7 +71,6 @@ const CharacterMaker = () => {
 
   return (
     <section className="CharacterMaker">
-      <div className="CharacterMaker__Main">
         <form className="CharacterMaker__Form">
           <label>
             Race:
@@ -173,7 +172,6 @@ const CharacterMaker = () => {
 
           <button onClick={handleSubmit} className="CharacterMaker__Button">Submit</button>
         </form>
-      </div>
       <div className="CharacterMaker__OutputArea">
         <div className="CharacterMaker__Output-PortraitContainer">
         {

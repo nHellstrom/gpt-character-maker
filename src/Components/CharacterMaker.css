@@ -1,7 +1,9 @@
 .CharacterMaker {
     min-width: 50rem;
     max-width: 75rem;
+    min-height: 60vh;
     background-color: rgba(255,255,255,0.25);
+    background-color: var(--primary-color-dark);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -11,16 +13,18 @@
 .CharacterMaker__Main {
     /* display: flex; */
     flex-direction: row;
+    height: 100%;
 }
 
 .CharacterMaker__Form {
     width: 25rem;
+    height: 100%;
     background-color: rgba(255,255,255,0.25);
     padding: 1rem;
     display: flex;
-    gap:0.65rem;
+    /* gap:1rem; */
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -34,6 +38,7 @@
 
 .CharacterMaker__OutputArea {
     max-width: 26rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +53,9 @@
 .CharacterMaker__Output-PortraitContainer {
     width: 256px;
     height: 256px;
-    border: 4px solid black;
+    border: 4px solid var(--black-color);
+    background-color: var(--secondary-color-dark);
+    color: var(--white-color);
     display: flex;
     align-items: center;
     justify-content: center;
