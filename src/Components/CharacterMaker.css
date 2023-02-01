@@ -3,7 +3,7 @@
     max-width: 75rem;
     min-height: 60vh;
     background-color: rgba(255,255,255,0.25);
-    background-color: var(--primary-color-dark);
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -19,7 +19,7 @@
 .CharacterMaker__Form {
     width: 25rem;
     height: 100%;
-    background-color: rgba(255,255,255,0.25);
+    background-color: var(--primary-color-dark);
     padding: 1rem;
     display: flex;
     /* gap:1rem; */
@@ -54,7 +54,7 @@
     width: 256px;
     height: 256px;
     border: 4px solid var(--black-color);
-    background-color: var(--secondary-color-dark);
+    background-color: var(--primary-color-dark);
     color: var(--white-color);
     display: flex;
     align-items: center;

@@ -13,16 +13,18 @@ html {
   --white-color: #f4f6f5;
 }
 
+body {
+  background-color: var(--secondary-color-dark)
+}
+
 .App {
   text-align: center;
-  background-color: brown;
 }
 
 .App__Header {
   padding-top: 0px;
   height: 5vh;
   color: var(--white-color);
-  background-color: var(--secondary-color-dark);
 }
 
 .App__Main {
