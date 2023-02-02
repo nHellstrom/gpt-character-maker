@@ -1,0 +1,53 @@
+.Landing {
+    background-color: grey;
+    background-image: url(../assets/landing.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 80%;
+    height: 40rem;
+    margin: 0 0 1rem 0;
+    box-shadow: 0 0 2rem 0.5rem rgba(0,0,0,0.2);
+    display: grid;
+    grid-template-columns: 4fr 2fr 4fr;
+    grid-template-rows: repeat(8, 1fr);
+    
+    padding: 3rem;
+}
+
+.Landing__Right {
+    grid-column: 3;
+    grid-row: 2/7;
+    background-color: rgba(255,255,255,0.7);
+    box-shadow: 0 0 0.2rem 0.5rem rgba(255,255,255,0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.Landing__Right p {
+    text-align: justify;
+}
+
+.Landing__Right button {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    text-shadow: 0 0 3px var(--white-color);
+    transition: all 0.1s;
+    box-shadow: 0 0 10px 3px var(--primary-color);
+}
+
+.Landing__Right button:hover {
+    cursor: pointer;
+    background-color: var(--secondary-color-dark);
+    color: var(--primary-color);
+    text-shadow: 0 0 3px var(--primary-color);
+    box-shadow: 0 0 10px 4px var(--primary-color-dark);
+}
+
+.Landing__Right button:active {
+    box-shadow: 0 0 13px 6px var(--primary-color-dark);
+    transform: scale(0.94);
+}

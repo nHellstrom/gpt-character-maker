@@ -6,6 +6,11 @@ const CustomConnectionSettings = () => {
 
   const connectionString = useContext(ApiContext);
 
+  const handleClick = () => {
+    
+    console.log(connectionString);
+  }
+
   return (
     <section className="ConnectionSettings">
       <label>
@@ -15,7 +20,7 @@ const CustomConnectionSettings = () => {
         (obtained from OpenAI):
         </span>
         <input type="text" defaultValue={"--Not Implemented--"} />
-        <button onClick={() => console.log(connectionString)}>Set</button>
+        <button onClick={handleClick}>Set</button>
       </label>
     </section>
   );
