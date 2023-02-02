@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import logo from "./logo.svg";
 import "./normalize.css";
 import "./App.css";
-import CharacterMaker from "./Components/CharacterMaker";
-import CustomConnectionSettings from "./Components/CustomConnectionSettings";
+import CharacterMaker from "./Components/CharacterMaker/CharacterMaker";
+import CustomConnectionSettings from "./Components/CustomConnectionSettings/CustomConnectionSettings";
 import { ApiContext, HistoryContext } from "./context";
-import Landing from "./Components/Landing";
+import Landing from "./Components/Landing/Landing";
 import {
   BrowserRouter,
   Routes,

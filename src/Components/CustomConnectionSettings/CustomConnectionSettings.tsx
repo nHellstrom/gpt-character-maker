@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./CustomConnectionSettings.css";
-import { ApiContext } from "../context";
+import { ApiContext } from "../../context";
 
 const CustomConnectionSettings = () => {
 

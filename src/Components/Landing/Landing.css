@@ -1,6 +1,6 @@
 .Landing {
     background-color: grey;
-    background-image: url(../assets/landing.jpg);
+    background-image: url(./../../assets/landing.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 80%;
