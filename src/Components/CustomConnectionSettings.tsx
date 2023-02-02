@@ -1,21 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./CustomConnectionSettings.css";
+import { ApiContext } from "../context";
 
-interface IApiSettings {
-  useCustom: boolean;
-}
+const CustomConnectionSettings = () => {
 
-const CustomConnectionSettings = (props: IApiSettings) => {
-  const ConnectionSettingsVisibility = props.useCustom
-    ? "ConnectionSettings--visible"
-    : "ConnectionSettings--hidden";
+  const connectionString = useContext(ApiContext);
 
   return (
-    <div className={ConnectionSettingsVisibility}>
-      <section className="ConnectionSettings">
-        
-      </section>
-    </div>
+    <section className="ConnectionSettings">
+      <label>
+        <span className="ConnectionSettings__Label">
+        Custom API Key
+        <br />
+        (obtained from OpenAI):
+        </span>
+        <input type="text" defaultValue={"--Not Implemented--"} />
+        <button onClick={() => console.log(connectionString)}>Set</button>
+      </label>
+    </section>
   );
 };
 

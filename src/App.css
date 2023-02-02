@@ -29,11 +29,13 @@ body {
 
 .App__Main {
   background-color: var(--secondary-color);
+  padding: 2rem 0;
   height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap:1rem;
 }
 
 button {
@@ -41,4 +43,12 @@ button {
   max-height: 3.5rem;
   max-width: 8rem;
   padding: 5px 8px;
+}
+
+.App__ConnectionSettings--hidden {
+  display:none;
+}
+
+.App__ConnectionSettings--visible {
+  display:flex;
 }

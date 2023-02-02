@@ -5,4 +5,9 @@ interface ICharacter {
     // TODO: Add creation date 
 }
 
-export type { ICharacter }
+interface IConnectionString {
+    useCustom: boolean,
+    connectionString: string | undefined
+  }
+
+export type { ICharacter, IConnectionString }
